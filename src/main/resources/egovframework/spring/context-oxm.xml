@@ -21,15 +21,16 @@
             </list>
         </property>
     </bean>
-    
+    <!--
     <bean id="purMarshallingView" class="org.springframework.web.servlet.view.xml.MarshallingView">
         <property name="marshaller" ref="castorMarshaller"></property>
         <property name="modelKey" value="purchsList"></property>
     </bean>
-    
+    -->
     <bean id="goodsMarshallingView" class="org.springframework.web.servlet.view.xml.MarshallingView">
         <property name="marshaller" ref="goodsCastorMarshaller"></property>
         <property name="modelKey" value="goodsList"></property>
     </bean>
+
     <!-- OXM END(Castor) -->
 </beans>
