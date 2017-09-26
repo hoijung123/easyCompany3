@@ -29,6 +29,7 @@
 					<li class="dept02"><a href="<c:url value='/pcs/selectListCart.do'/>" ><spring:message code="menu.cart" /></a></li>
 					<li class="dept02"><a href="<c:url value='/dlv/selectListPurchase.do'/>" ><spring:message code="menu.purchs" /></a></li>
 					<li class="dept02"><a href="<c:url value='/brd/egovBoardList.do'/>" ><spring:message code="menu.board" /></a></li>
+					<li class="dept02"><a href="<c:url value='/tran/getTickerList.do'/>" >Ticker</a></li>
 				</ul>
 			</li>
 			<c:if test="${loginVO.mngrSe == 'ROLE_ADMIN' || loginVO.mngrSe == 'CODE01'}">

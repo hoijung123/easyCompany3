@@ -1,4 +1,4 @@
-use easycompany;
+use korbit;
 
 insert into IDS (TABLE_NAME,NEXT_ID) values ('RTETNBBS',3);
 insert into IDS (TABLE_NAME,NEXT_ID) values ('RTETNCART',3);

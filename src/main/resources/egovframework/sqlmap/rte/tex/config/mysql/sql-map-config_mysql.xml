@@ -7,5 +7,6 @@
 	<sqlMap resource="egovframework/sqlmap/rte/tex/query/mysql/EgovBoard_SQL_mysql.xml"/>
 	<sqlMap resource="egovframework/sqlmap/rte/tex/query/mysql/EgovPurchase_SQL_mysql.xml"/>
 	<sqlMap resource="egovframework/sqlmap/rte/tex/query/mysql/EgovDelivery_SQL_mysql.xml"/>
-	<sqlMap resource="egovframework/sqlmap/rte/tex/query/mysql/EgovMember_SQL_mysql.xml"/> 
+	<sqlMap resource="egovframework/sqlmap/rte/tex/query/mysql/EgovMember_SQL_mysql.xml"/>
+	<sqlMap resource="egovframework/sqlmap/rte/tex/query/mysql/Ticker_SQL_mysql.xml"/>
 </sqlMapConfig>

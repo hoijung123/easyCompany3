@@ -101,9 +101,5 @@
 		<error-code>404</error-code>
 		<location>/WEB-INF/jsp/egovframework/rte/tex/cmmn/code404.jsp</location>
 	</error-page>
-	<error-page>
-		<error-code>500</error-code>
-		<location>/WEB-INF/jsp/egovframework/rte/tex/cmmn/bizError.jsp</location>
-	</error-page>
 	
 </web-app>

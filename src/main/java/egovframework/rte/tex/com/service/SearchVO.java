@@ -15,9 +15,10 @@
  */
 package egovframework.rte.tex.com.service;
 
-import java.io.Serializable;
+import egovframework.rte.tex.util.Utils;
 
 import javax.xml.bind.annotation.XmlRootElement;
+import java.io.Serializable;
 
 /**
  * 검색 정보를 담고있는 VO 클래스를 정의한다.
@@ -79,6 +80,32 @@ public class SearchVO implements Serializable {
 		this.firstIndex = vo.firstIndex;
 		this.lastIndex = vo.lastIndex;
 		this.recordCountPerPage = vo.recordCountPerPage;
+	}
+
+	String timestamp = "";
+	String dateTime = "";
+
+	public String getCurrencyPair() {
+		return currencyPair;
+	}
+
+	public void setCurrencyPair(String currencyPair) {
+		this.currencyPair = currencyPair;
+	}
+
+	String currencyPair = "";
+
+	public String getTimestamp() {
+		return timestamp;
+	}
+	public void setTimestamp(String timestamp) {
+		this.timestamp = timestamp;
+	}
+	public String getDateTime() {
+		return Utils.timeStamp2Date(this.timestamp);
+	}
+	public void setDateTime(String dateTime) {
+		this.dateTime = dateTime;
 	}
 
 	/**

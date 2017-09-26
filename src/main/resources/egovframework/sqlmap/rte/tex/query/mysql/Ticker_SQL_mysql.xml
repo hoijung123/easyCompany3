@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="Ticker">
+
+	<typeAlias  alias="egovMap" type="egovframework.rte.psl.dataaccess.util.EgovMap"/>
+	<typeAlias  alias="searchVO" type="egovframework.rte.tex.com.service.SearchVO"/>
+	<typeAlias  alias="tickerDtlVO" type="egovframework.rte.tex.tran.service.TickerDtlVO"/>
+	
+	<resultMap id="tickerDtl" class="tickerDtlVO">
+		<result property="currencyPair" column="currency_pair"/>
+		<result property="last" column="last"/>
+		<result property="bid" column="bid"/>
+		<result property="ask" column="ask"/>
+		<result property="low" column="low"/>
+		<result property="volume" column="volume"/>
+	</resultMap>
+
+	<!-- /* select dual */ -->
+	<select id="tickerDao.getTickerList" parameterClass="tickerDtlVO" resultMap="tickerDtl">
+		SELECT `t_ticker`.`currency_pair`,
+		`t_ticker`.`timestamp`,
+		`t_ticker`.`last`,
+		`t_ticker`.`bid`,
+		`t_ticker`.`ask`,
+		`t_ticker`.`low`,
+		`t_ticker`.`high`,
+		`t_ticker`.`volume`
+		FROM `korbit`.`t_ticker`
+		where
+		1=1
+		LIMIT #firstIndex#, #recordCountPerPage#
+	</select>
+
+	<!-- /* select dual */ -->
+	<select id="tickerDao.getTickerListTotCnt"  resultClass="int">
+		SELECT COUNT(*) totcnt
+		FROM `korbit`.`t_ticker`
+		where
+		1=1
+	</select>
+
+</sqlMap>
