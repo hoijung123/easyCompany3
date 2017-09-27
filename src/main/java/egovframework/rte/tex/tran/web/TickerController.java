@@ -23,8 +23,10 @@ import egovframework.rte.tex.mbr.service.MemberVO;
 import egovframework.rte.tex.pcs.service.PurchaseVO;
 import egovframework.rte.tex.tran.service.TickerDtlVO;
 import egovframework.rte.tex.tran.service.TickerService;
+import egovframework.rte.tex.util.Constants;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -87,10 +89,18 @@ public class TickerController {
 		searchVO.setRecordCountPerPage(paginationInfo.getRecordCountPerPage());
 
 		TickerDtlVO purchaseVO = new TickerDtlVO();
+
+		String currencyPair = request.getParameter("currencyPair");
+		if (StringUtils.isEmpty(currencyPair))
+		{
+			currencyPair = Constants.ETH_KRW;
+		}
+		purchaseVO.setCurrencyPair(currencyPair);
 		purchaseVO.setSearchVO(searchVO);
 
 		List<TickerDtlVO> purchsList = tickerService.getTickerList(purchaseVO);
 		model.addAttribute("resultList", purchsList);
+		model.addAttribute("currencyPair", currencyPair);
 
 		int totCnt = tickerService.getTickerListTotCnt(purchaseVO);
 		paginationInfo.setTotalRecordCount(totCnt);

@@ -14,12 +14,15 @@
 		<result property="ask" column="ask"/>
 		<result property="low" column="low"/>
 		<result property="volume" column="volume"/>
+		<result property="timestamp" column="timestamp"/>
+		<result property="dateTime" column="date_time"/>
 	</resultMap>
 
 	<!-- /* select dual */ -->
 	<select id="tickerDao.getTickerList" parameterClass="tickerDtlVO" resultMap="tickerDtl">
 		SELECT `t_ticker`.`currency_pair`,
 		`t_ticker`.`timestamp`,
+		FROM_UNIXTIME(substr(`t_ticker`.`timestamp`,1,10),'%Y-%m-%d %H:%i:%s') as date_time,
 		`t_ticker`.`last`,
 		`t_ticker`.`bid`,
 		`t_ticker`.`ask`,
@@ -29,16 +32,23 @@
 		FROM `korbit`.`t_ticker`
 		where
 		1=1
+		<isNotNull property="currencyPair">
+		  And currency_pair = #currencyPair#
+		</isNotNull>
         order by timestamp desc
 		LIMIT #firstIndex#, #recordCountPerPage#
 	</select>
 
 	<!-- /* select dual */ -->
-	<select id="tickerDao.getTickerListTotCnt"  resultClass="int">
-		SELECT COUNT(*) totcnt
+	<select id="tickerDao.getTickerListTotCnt"  parameterClass="tickerDtlVO" resultClass="int">
+		SELECT count(1) as totcnt,
+			COUNT(*) as a
 		FROM `korbit`.`t_ticker`
 		where
 		1=1
+		<isNotNull property="currencyPair">
+			And currency_pair = #currencyPair#
+		</isNotNull>
 	</select>
 
 </sqlMap>
